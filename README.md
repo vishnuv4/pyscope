@@ -6,7 +6,7 @@ Tool to simulate digital signals on an oscilloscope. Runs on Windows.
 
 Each set of channels is stored as a string of 1s and 0s in a json file. The project can support multiple json files for different signals, saved in the "signals" directory of the repo.
 
-To display the channels, open a powershell terminal in the repo root, and execute ```.\run <filename>```. Do not add the ".json" extension.
+To display the channels for a signal, open a powershell terminal in the repo root, and execute ```.\run <filename>```. Do not add the ".json" extension.
 
 To save a set of channels, modify the strings in add_signal.py  and run ```.\add <filename>``` to save it as a new json file. No need to add the extension.
 
