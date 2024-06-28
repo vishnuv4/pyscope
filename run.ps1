@@ -3,5 +3,5 @@ param(
     $filename
 )
 
-$fullFileName = $filename + ".json"
+$fullFileName = "signals\" + $filename + ".json"
 .venv\Scripts\python.exe -m scope $fullFileName
