@@ -1,4 +1,5 @@
-# Use this script to automate the creation of the json file, by changing the filename after each modification
+# Use this script to automate the creation of the json file 
+# Remember to change the filename after each modification, if you do not want to overwrite the previously saved signal.
 
 import json
 
