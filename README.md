@@ -1,6 +1,6 @@
 ## Description
 
-Tool to simulate digital signals on an oscilloscope.
+Tool to simulate digital signals on an oscilloscope. Runs on Windows.
 
 ## Usage
 
