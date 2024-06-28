@@ -1,39 +1,46 @@
+import json
+import sys
 import matplotlib.pyplot as plt
+import argparse
 
-num_graphs = 4
-signals = [[] for _ in range(num_graphs)]
-pads = [[] for _ in range(num_graphs)]
+parser = argparse.ArgumentParser(description='Signals')
+parser.add_argument('file', type=str, help="Name of the signal file")
 
-# The spaces don't mean anything, just grouped for convenience
-signals[0] = " 0101 1011 0000 0000 0110 1001 0000 0000 1010 1101 0000 0000 1010 1100 0000 0000"
-signals[1] = " 0000 0000 0110 1101 0000 0000 0011 0100 0000 0000 0101 1100 0000 0000 0010 0001"
-signals[2] = " 1010 1010 1010 1010 1010 1010 1010 1010 1010 1010 1010 1010 1010 1010 1010 1010"
-signals[3] = " 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000"
-pads[0] = 5 * [0]
-pads[1] = 5 * [0]
-pads[2] = 5 * [0]
-pads[3] = 5 * [1]
+args = parser.parse_args()
+filename = args.file
 
-for i in range(num_graphs):
-    signals[i] = pads[i] + [int(bit) for bit in "".join(signals[i].split())] + pads[i]
-    signals[i] = [((2 * i) + k) for k in signals[i]]
+try:
+    with open(filename, "r", encoding="utf-8") as file:
+        signals = json.load(file)
+except FileNotFoundError:
+    raise RuntimeError("Signal not found!")
 
-if not all(len(signal) is len(signals[0]) for signal in signals):
-    raise ValueError("Signal lengths different")
+i = 0
+for ch in signals:
+    signals[ch] = [int(bit) for bit in "".join(signals[ch].split())]
+    signals[ch] = [((2 * i) + k) for k in signals[ch]]
+    i += 1
 
-t = range(len(signals[0]))
+lengths = [len(lst) for lst in signals.values()]
+if not all(length is lengths[0] for length in lengths):
+    raise ValueError("Signal lengths are not the same")
+
+t = range(lengths[0])
 
 # Each array element corresponds to the value immediately after the grid line
 
 colors = ['yellow', 'cyan', 'purple', 'blue']
 plt.figure(figsize=(15, 6))
-for i in range(num_graphs):
-    plt.step(t, signals[i], where='pre', color=colors[i])
+i = k = 0
+for ch in signals:
+    plt.step(t, signals[ch], where='pre', color=colors[k])
+    i = i + 1
+    k = i % 4
 
 plt.gca().set_facecolor('black')
 plt.xlabel('')
 plt.ylabel('')
-plt.ylim(-0.5, (2 * num_graphs) + 0.5)
+plt.ylim(-0.5, (2 * i) + 0.5)
 
 plt.xticks(ticks=t, labels='')
 plt.yticks(ticks=[0,2], labels='')
