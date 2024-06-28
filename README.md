@@ -4,7 +4,7 @@ Tool to simulate digital signals on an oscilloscope. Runs on Windows.
 
 ## Usage
 
-Each set of channels is stored as a string of 1s and 0s in a json file.
+Each set of channels is stored as a string of 1s and 0s in a json file. The project can support multiple json files for different signals, saved in the "signals" directory of the repo.
 
 To display the channels, open a powershell terminal in the repo root, and execute ```.\run <filename>```. Do not add the ".json" extension.
 
