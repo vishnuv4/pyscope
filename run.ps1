@@ -1,6 +1,7 @@
 # This is the json file containing the signal you want to display on different channels
 param(
-    $filename
+    [Parameter(Mandatory=$true)]
+    [string]$filename
 )
 
 $fullFileName = "signals\" + $filename + ".json"

@@ -1,6 +1,7 @@
 # This is the json file containing the signal you want to save
 param(
-    $filename
+    [Parameter(Mandatory=$true)]
+    [string]$filename
 )
 
 $fullFileName = "signals\" + $filename + ".json"
