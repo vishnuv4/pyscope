@@ -1,13 +1,13 @@
+## Description
+
 Tool to simulate digital signals on an oscilloscope.
 
 ## Usage: 
 
-Open a powershell terminal in the repo root, and execute ```.\run``` to display the scope simulation. The file name in the ```run.ps1``` script will be displayed.
+Each set of channels is stored as a string of 1s and 0s in a json file.
 
-If you want to save a signal, modify it in ```add_signal.py```, change the file name (if necessary) in ```add.ps1```, and run ```.\add```.
+To display the channels, open a powershell terminal in the repo root, and execute ```.\run <filename>```. Do not add the ".json" extension.
 
-The channels are stored in the json file and the python script (which is run by ```run.ps1```) reads the json file provided as an argument in the powershell script and displays it.
+To save a set of channels, modify the strings in add_signal.py  and run ```.\add <filename>``` to save it as a new json file. No need to add the extension.
 
-Keys in the json file do not matter. Spaces in the strings also do not matter.
-
-Adding new signals can be automated using the ```add_signal.py``` script.
+The keys in the json object do not matter as long as they are distinct. Whitespace in the strings also do not matter, so we can group the channel strings of 1s and 0s as required.
