@@ -2,7 +2,7 @@
 
 Tool to simulate digital signals on an oscilloscope.
 
-## Usage: 
+## Usage
 
 Each set of channels is stored as a string of 1s and 0s in a json file.
 
