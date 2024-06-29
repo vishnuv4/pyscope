@@ -17,6 +17,6 @@ There are 3 commands:
 
 For the commands requiring a filename, do not add the ```.json``` file extension - the script will do that.
 
-The keys in the json file must be one out of ```ch0```, ```ch1```, ```ch2```, or ```ch3```. No more than 4 channels are supported. The order of channels in the json file does not matter.
+The keys in the json files within ```signals\``` must be one out of ```ch0```, ```ch1```, ```ch2```, or ```ch3```. No more than 4 channels are supported. The order of channels in the json file does not matter.
 
 Whitespace in the strings also do not matter, so we can group the channel strings of 1s and 0s however it's convenient.
