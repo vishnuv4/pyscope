@@ -4,4 +4,4 @@ param(
 )
 
 $saveFilename = "signals\" + $filename + ".json"
-Copy-Item -Path "hex2bin_outputs.json" -Destination $saveFilename
+Copy-Item -Path "outputs_hex2bin.json" -Destination $saveFilename

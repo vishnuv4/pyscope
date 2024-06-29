@@ -27,7 +27,7 @@ def convert_hex2bin(hex_str):
 if __name__ == "__main__":
 
     try:
-        with open("hex2bin_inputs.json", "r", encoding="utf-8") as file:
+        with open("inputs_hex2bin.json", "r", encoding="utf-8") as file:
             hex_strings = json.load(file)
     except FileNotFoundError:
         raise RuntimeError("No input file found. Create a file called hex2bin_inputs.json in the repository root.")
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     for input in hex_strings:
         bin_strings[input] = convert_hex2bin(hex_strings[input])
 
-    with open("hex2bin_outputs.json", "w", encoding="utf-8") as file:
+    with open("outputs_hex2bin.json", "w", encoding="utf-8") as file:
         json.dump(bin_strings, file, indent=4)
     
     for key, val in bin_strings.items():
