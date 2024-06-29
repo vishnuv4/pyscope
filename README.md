@@ -10,7 +10,7 @@ Each set of channels is stored as a string of 1s and 0s in a json file. All sign
 
 To display the channels for a signal, open a powershell terminal in the repo root, and execute ```.\run <filename>```. Do not add the ".json" extension.
 
-To save a set of channels, modify the strings in add_signal.py  and execute ```.\add <filename>``` to save it as a new signal/json file. Do not add the ".json" extension.
+To save a set of channels, modify the strings in ```scripts\add_signal.py```  and execute ```.\add <filename>``` to save it as a new signal/json file. Do not add the ".json" extension.
 
 The keys in the json file must be one out of ```ch0```, ```ch1```, ```ch2```, or ```ch3```. No more than 4 channels are supported. The order of channels in the json file does not matter.
 
