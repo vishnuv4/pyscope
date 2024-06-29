@@ -1,6 +1,7 @@
 import json
 import matplotlib.pyplot as plt
 import argparse
+import collections
 
 parser = argparse.ArgumentParser(description='Signals')
 parser.add_argument('file', type=str, help="Name of the signal file")
@@ -12,7 +13,16 @@ try:
     with open(filename, "r", encoding="utf-8") as file:
         signals = json.load(file)
 except FileNotFoundError:
-    raise RuntimeError("Signal not found!")
+    raise RuntimeError("Make sure your probes are connected. No signal found.")
+
+if len(signals) > 4:
+    raise RuntimeError("Buy a better oscilloscope with more than 4 channels.")
+
+channel_list = ["ch0", "ch1", "ch2", "ch3"]
+if not all(key in channel_list for key in signals.keys()):
+    raise RuntimeError("I don't know what that is but it isn't a channel.")
+
+signals = collections.OrderedDict(sorted(signals.items()))
 
 i = 0
 for ch in signals:
