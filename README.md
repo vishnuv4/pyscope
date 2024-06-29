@@ -4,7 +4,9 @@ Tool to simulate digital signals on an oscilloscope. Runs on Windows.
 
 ## Usage
 
-Each set of channels is stored as a string of 1s and 0s in a json file. The project can support multiple json files for different signals, saved in the "signals" directory of the repo.
+The tool can be completely controlled by a Powershell terminal in the root repository.
+
+Each set of channels is stored as a string of 1s and 0s in a json file. All signals are saved in the "signals\" directory.
 
 To display the channels for a signal, open a powershell terminal in the repo root, and execute ```.\run <filename>```. Do not add the ".json" extension.
 
@@ -14,4 +16,4 @@ The keys in the json file must be one out of ```ch0```, ```ch1```, ```ch2```, or
 
 Whitespace in the strings also do not matter, so we can group the channel strings of 1s and 0s however it's convenient.
 
-There is also a utility called hex2bin.py that can be used to convert a hexadecimal string (defined at the top of the file) to a binary string. That binary string will be printed on the console and will be saved in a file called "hex2bin_output.json".
+There is also a utility called hex2bin.py that can be used to convert a hexadecimal string (defined at the top of the file) to a binary string. That binary string will be printed on the console and will be saved in a file called "hex2bin_output.json" in the repo root.

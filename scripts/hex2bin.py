@@ -2,7 +2,7 @@
 # You only need to change the hex_string variable below
 # Then run python -m hex2bin
 
-hex_string = "32 54 fa 37 e3"
+hex_string = "32 54 fa 37 43 68 3f e3"
 
 ########################################################################
 
