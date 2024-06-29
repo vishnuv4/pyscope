@@ -10,6 +10,8 @@ To display the channels for a signal, open a powershell terminal in the repo roo
 
 To save a set of channels, modify the strings in add_signal.py  and execute ```.\add <filename>``` to save it as a new signal/json file. Do not add the ".json" extension.
 
-The keys in the json file do not matter as long as they are distinct. Whitespace in the strings also do not matter, so we can group the channel strings of 1s and 0s however it's convenient.
+The keys in the json file must be one out of ```ch0```, ```ch1```, ```ch2```, or ```ch3```. No more than 4 channels are supported. The order of channels in the json file does not matter.
+
+Whitespace in the strings also do not matter, so we can group the channel strings of 1s and 0s however it's convenient.
 
 There is also a utility called hex2bin.py that can be used to convert a hexadecimal string (defined at the top of the file) to a binary string. That binary string will be printed on the console and will be saved in a file called "hex2bin_output.json".
