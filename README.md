@@ -4,11 +4,7 @@ Tool to simulate digital signals on an oscilloscope. Runs on Windows.
 
 ## Usage
 
-<<<<<<< HEAD
 The tool is intended to be used with a Powershell CLI set to the repository root.
-=======
-The tool can be completely controlled by a Powershell CLI set to the repository root.
->>>>>>> 088394cefbf3fb9fdcce950b2632f43cb97ad6f4
 
 Each set of channels is stored as a string of 1s and 0s in a json file. All signals are saved in the ```signals\``` directory.
 
