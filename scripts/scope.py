@@ -27,7 +27,7 @@ signals = collections.OrderedDict(sorted(signals.items()))
 i = 0
 for ch in signals:
     signals[ch] = [int(bit) for bit in "".join(signals[ch].split())]
-    signals[ch] = [((2 * i) + k) for k in signals[ch]]
+    signals[ch] = [((-2 * i) + k) for k in signals[ch]]
     i += 1
 
 lengths = [len(lst) for lst in signals.values()]
@@ -49,10 +49,10 @@ for ch in signals:
 plt.gca().set_facecolor('black')
 plt.xlabel('')
 plt.ylabel('')
-plt.ylim(-0.5, (2 * i) + 0.5)
+plt.ylim(-(2 * i) + 1, 1.5)
 
 plt.xticks(ticks=t, labels='')
-plt.yticks(ticks=[0,2], labels='')
+plt.yticks(ticks=[(-2 * i) for i in range(len(lengths))], labels=[channel for channel in signals.keys()])
 
 plt.grid(True)
 
