@@ -13,7 +13,7 @@ try:
     with open(filename, "r", encoding="utf-8") as file:
         signals = json.load(file)
 except FileNotFoundError:
-    raise RuntimeError("Make sure your probes are connected. No signal found.")
+    raise RuntimeError("No signal found. Maybe you need to connect probes.")
 
 if len(signals) > 4:
     raise RuntimeError("Buy a better oscilloscope with more than 4 channels.")
