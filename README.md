@@ -10,8 +10,6 @@ Each signal (a collection of channels) must be stored as a json file of bitstrin
 There are 4 commands to know:
 - ```.\run [filename]```
     - Displays the signal with the specified name in ```signals\```
-- ```.\add [filename]```
-    - Save the contents of ```scripts\add_signal.py``` in the ```signals\``` folder with the specified name
 - ```.\convert```
     - Converts the hex strings in ```hex2bin_inputs.json``` and saves it in ```hex2bin_outputs.json```
 - ```.\save [filename]```
