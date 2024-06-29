@@ -10,7 +10,7 @@ Each signal (a collection of channels) must be stored as a json file of bitstrin
 There are 3 commands:
 - ```.\run [filename]```
     - Displays the signal with the specified name in ```signals\```
-- ```.\convert```
+- ```.\conv```
     - Converts the hex strings in ```hex2bin_inputs.json``` and saves it in ```hex2bin_outputs.json```
 - ```.\save [filename]```
     - Saves the contents of ```hex2bin_outputs.json``` to a file with the specified name in the ```signals\``` folder.
