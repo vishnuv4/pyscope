@@ -1,14 +1,11 @@
 # Utility to convert a hex string to a binary string.
-# You only need to change the hex_string variable below
-# Then run python -m hex2bin
-
-hex_string = "32 54 fa 37 43 68 3f e3"
-
-########################################################################
+# Converts all the strings in hex2bin_inputs.json
+# Saves them in hex2bin_outputs.json
 
 import json
 
 def convert_hex2bin(hex_str):
+
     hex_str = "".join(hex_str.split())
     if not all(char in "0123456789abcdefABCDEF" for char in hex_str):
         raise ValueError("Input string is not a valid hexadecimal number.")
@@ -28,9 +25,19 @@ def convert_hex2bin(hex_str):
     return binary_output
 
 if __name__ == "__main__":
-    bin_string = {}
-    bin_string["output"] = convert_hex2bin(hex_string)
 
-    with open("hex2bin_output.json", "w", encoding="utf-8") as file:
-        json.dump(bin_string, file, indent=4)
-    print(bin_string["output"])
+    try:
+        with open("hex2bin_inputs.json", "r", encoding="utf-8") as file:
+            hex_strings = json.load(file)
+    except FileNotFoundError:
+        raise RuntimeError("No input file found. Create a file called hex2bin_inputs.json in the repository root.")
+
+    bin_strings = {}
+    for input in hex_strings:
+        bin_strings[input] = convert_hex2bin(hex_strings[input])
+
+    with open("hex2bin_outputs.json", "w", encoding="utf-8") as file:
+        json.dump(bin_strings, file, indent=4)
+    
+    for key, val in bin_strings.items():
+        print(f"{key} : {val}")

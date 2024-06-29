@@ -16,4 +16,4 @@ The keys in the json file must be one out of ```ch0```, ```ch1```, ```ch2```, or
 
 Whitespace in the strings also do not matter, so we can group the channel strings of 1s and 0s however it's convenient.
 
-There is also a utility that can be used to convert a hexadecimal string to a binary string. Change the string at the top of ```scripts\hex2bin.py``` and run ```.\convert``` from the powershell terminal (in the repo root). The corresponding binary string will be printed on the console and will be saved in a file called "hex2bin_output.json" in the repo root.
+There is also a utility that can be used to convert hexadecimal strings to a binary strings. List the strings you want to convert in json format in ```hex2bin_inputs.json``` in the repository root and run ```.\convert``` in the terminal. The corresponding binary strings will be saved in ```hex2bin_outputs.json```.
