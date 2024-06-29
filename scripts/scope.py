@@ -38,7 +38,7 @@ t = range(lengths[0])
 
 # Each array element corresponds to the value immediately after the grid line
 
-colors = ['yellow', 'cyan', 'purple', 'blue']
+colors = ['xkcd:yellow', 'xkcd:cyan', 'xkcd:neon purple', 'xkcd:bright blue']
 plt.figure(figsize=(15, 6))
 i = k = 0
 for ch in signals:
