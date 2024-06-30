@@ -48,7 +48,7 @@ for ch in signals:
 plt.gca().set_facecolor('black')
 plt.xlabel('')
 plt.ylabel('')
-plt.ylim(min(signals[list(signals.keys())[-1]]) - 1, max(signals[list(signals.keys())[0]]) + 1)
+plt.ylim(( -2 * len(signals) + 1), 2)
 
 plt.xticks(ticks=t, labels='')
 plt.yticks(ticks=[(-2 * i) for i in range(len(lengths))], labels=[channel for channel in signals.keys()])
