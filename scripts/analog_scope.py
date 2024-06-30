@@ -9,11 +9,11 @@ signals = {}
 Modify the signals here
 '''
 
-arr1 = np.sin(np.linspace(0, 2 * np.pi, 40))
-arr2 = 1 + np.cos(np.linspace(0, 2 * np.pi, 40))
+arr1 = np.sin(np.linspace(0, 8 * np.pi, 50))
+arr2 = 2 * np.sin(np.linspace(0, 8 * np.pi, 50))
 
-signals["ch0"] = np.sin(np.linspace(0, 2 * np.pi, 80))
-signals["ch1"] = 2 * np.cos(np.linspace(0, 2 * np.pi, 80))
+signals["ch0"] = np.sin(np.linspace(0, 20 * np.pi, 100))
+signals["ch1"] = 2 * np.cos(np.linspace(0, 8 * np.pi, 100))
 signals["ch2"] = np.concatenate([arr1, arr2])
 
 ######################################################################
