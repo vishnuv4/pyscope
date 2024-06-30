@@ -4,9 +4,16 @@ import collections
 
 signals = {}
 
+######################################################################
+'''
+Modify the signals here
+'''
+
 signals["ch0"] = np.sin(np.linspace(0, 2 * np.pi, 80))
 signals["ch1"] = np.cos(np.linspace(0, 2 * np.pi, 80))
-signals["ch2"] = np.sin(np.linspace(0, 2 * np.pi, 80))
+signals["ch2"] = np.sin(np.linspace(0, 2 * np.pi, 40))
+
+######################################################################
 
 if len(signals) > 4:
     raise RuntimeError("Can't support more than 4 channels")
