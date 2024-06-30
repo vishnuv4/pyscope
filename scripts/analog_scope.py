@@ -45,7 +45,7 @@ plt.xlabel('')
 plt.ylabel('')
 print(list(signals.keys())[0])
 print(list(signals.keys())[-1])
-plt.ylim(( -2 * len(signals) + 1), 2)
+plt.ylim(min(signals[list(signals.keys())[-1]]) - 2, max(signals[list(signals.keys())[0]]) + 2)
 
 plt.xticks(ticks=t, labels='')
 plt.yticks(ticks=[(-2 * i) for i in range(len(lengths))], labels=[channel for channel in signals.keys()])
