@@ -1,65 +1,78 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import collections
+import scripts.error as error
 
-signals = {}
-
-######################################################################
-'''
-Modify the signals here
-'''
-
-arr1 = np.sin(np.linspace(0, 8 * np.pi, 50))
-arr2 = 2 * np.sin(np.linspace(0, 8 * np.pi, 50))
-
-signals["ch0"] = np.sin(np.linspace(0, 20 * np.pi, 100))
-signals["ch1"] = 2 * np.cos(np.linspace(0, 8 * np.pi, 100))
-signals["ch2"] = np.concatenate([arr1, arr2])
 
 ######################################################################
+def generate_signal():
+    """
+    Modify the analog signal here and return it as a dict
+    The keys of the dict must be ch0, ch1, ch2, or ch3
+    """
 
-if len(signals) > 4:
-    raise RuntimeError("Can't support more than 4 channels")
+    arr1 = np.sin(np.linspace(0, 8 * np.pi, 200))
+    arr2 = 2 * np.sin(np.linspace(0, 8 * np.pi, 200))
 
-channel_list = ["ch0", "ch1", "ch2", "ch3"]
-if not all(key in channel_list for key in signals.keys()):
-    raise RuntimeError("Invalid channel name")
+    signals = {}
+    signals["ch0"] = np.cos(np.linspace(0, 50 * np.pi, 400))
+    signals["ch1"] = np.linspace(0,10,400) % 2
+    signals["ch2"] = np.concatenate([arr1, arr2])
+    return signals
 
-lengths = [len(lst) for lst in signals.values()]
-if not all(length is lengths[0] for length in lengths):
-    raise ValueError("Signal lengths are not the same")
+######################################################################
 
-signals = collections.OrderedDict(sorted(signals.items()))
+if __name__ == "__main__":
 
-displacement = 2
-keys = list(signals.keys())
-for i in range(len(keys)-1):
-    displacement = abs(min(signals[keys[i]])) + abs(max(signals[keys[i+1]])) + 2
+    output_signal = generate_signal()
 
-t = range(lengths[0])
-i=0
-for ch in signals:
-    signals[ch] = [((-displacement * i) + k) for k in signals[ch]]
-    i += 1
+    if len(output_signal) > 4:
+        error.fatal("Can't support more than 4 channels")
 
-# Each array element corresponds to the value immediately after the grid line
+    channel_list = ["ch0", "ch1", "ch2", "ch3"]
+    if not all(key in channel_list for key in output_signal.keys()):
+        error.fatal("Invalid channel name")
 
-colors = ['xkcd:yellow', 'xkcd:cyan', 'xkcd:neon purple', 'xkcd:bright blue']
-plt.figure(figsize=(16.18, 10))
-i = k = 0
-for ch in signals:
-    plt.plot(t, signals[ch], color=colors[k])
-    i = i + 1
-    k = i % 4
+    lengths = [len(lst) for lst in output_signal.values()]
+    i = 0
+    if not all(length == lengths[0] for length in lengths):
+        for val in output_signal.values():
+            print(f"{i}: {lengths[i]}")
+            i += 1
 
-plt.gca().set_facecolor('black')
-plt.xlabel('')
-plt.ylabel('')
-plt.ylim(min(signals[list(signals.keys())[-1]]) - 2, max(signals[list(signals.keys())[0]]) + 2)
+        error.fatal("Signal lengths are not the same")
 
-plt.xticks(ticks=t, labels='')
-plt.yticks(ticks=[(-displacement * i) for i in range(len(lengths))], labels=[channel for channel in signals.keys()])
+    output_signal = collections.OrderedDict(sorted(output_signal.items()))
 
-plt.grid(True)
+    displacement = 2
+    keys = list(output_signal.keys())
+    for i in range(len(keys)-1):
+        displacement = abs(min(output_signal[keys[i]])) + abs(max(output_signal[keys[i+1]])) + 2
 
-plt.show()
+    t = range(lengths[0])
+    i=0
+    for ch in output_signal:
+        output_signal[ch] = [((-displacement * i) + k) for k in output_signal[ch]]
+        i += 1
+
+    # Each array element corresponds to the value immediately after the grid line
+
+    colors = ['xkcd:yellow', 'xkcd:cyan', 'xkcd:neon purple', 'xkcd:bright blue']
+    plt.figure(figsize=(16.18, 10))
+    i = k = 0
+    for ch in output_signal:
+        plt.plot(t, output_signal[ch], color=colors[k])
+        i = i + 1
+        k = i % 4
+
+    plt.gca().set_facecolor('black')
+    plt.xlabel('')
+    plt.ylabel('')
+    plt.ylim(min(output_signal[list(output_signal.keys())[-1]]) - 2, max(output_signal[list(output_signal.keys())[0]]) + 2)
+
+    plt.xticks(ticks=np.linspace(0, lengths[0], 50), labels='')
+    plt.yticks(ticks=[(-displacement * i) for i in range(len(lengths))], labels=[channel for channel in output_signal.keys()])
+
+    plt.grid(True)
+
+    plt.show()

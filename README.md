@@ -1,6 +1,6 @@
 ## Description
 
-Tool to simulate digital signals on an oscilloscope. Runs on Windows.
+Tool to simulate digital signals on an oscilloscope. Analog signals are supported but not as elegantly as digital. Runs on Windows.
 
 ## Usage
 
@@ -14,6 +14,8 @@ There are 3 commands:
     - Converts the hex strings in ```hex2bin_inputs.yml``` and saves it in ```hex2bin_outputs.yml```
 - ```.\save [filename]```
     - Saves the contents of ```hex2bin_outputs.yml``` to a file with the specified name in the ```signals\``` folder.
+- ```.\analog```
+    - Runs the analog scope. The signal to be modified is within ```generate_signal()``` function of the ```scripts\analog_scope``` file.
 
 For the commands requiring a filename, do not add the ```.yml``` file extension - the script will do that.
 
