@@ -1,8 +1,8 @@
 # Utility to convert a hex string to a binary string.
-# Converts all the strings in hex2bin_inputs.json
-# Saves them in hex2bin_outputs.json
+# Converts all the strings in hex2bin_inputs.yml
+# Saves them in hex2bin_outputs.yml
 
-import json
+import yaml
 
 def convert_hex2bin(hex_str):
 
@@ -27,17 +27,17 @@ def convert_hex2bin(hex_str):
 if __name__ == "__main__":
 
     try:
-        with open("inputs_hex2bin.json", "r", encoding="utf-8") as file:
-            hex_strings = json.load(file)
+        with open("inputs_hex2bin.yml", "r", encoding="utf-8") as file:
+            hex_strings = yaml.safe_load(file)
     except FileNotFoundError:
-        raise RuntimeError("No input file found. Create a file called hex2bin_inputs.json in the repository root.")
+        raise RuntimeError("No input file found. Create a file called hex2bin_inputs.yml in the repository root.")
 
     bin_strings = {}
     for input in hex_strings:
         bin_strings[input] = convert_hex2bin(hex_strings[input])
 
-    with open("outputs_hex2bin.json", "w", encoding="utf-8") as file:
-        json.dump(bin_strings, file, indent=4)
+    with open("outputs_hex2bin.yml", "w", encoding="utf-8") as file:
+        yaml.dump(bin_strings, file, default_flow_style=False)
     
     for key, val in bin_strings.items():
         print(f"{key} : {val}")

@@ -1,7 +1,7 @@
-import json
 import matplotlib.pyplot as plt
 import argparse
 import collections
+import yaml
 
 parser = argparse.ArgumentParser(description='Signals')
 parser.add_argument('file', type=str, help="Name of the signal file")
@@ -11,9 +11,9 @@ filename = args.file
 
 try:
     with open(filename, "r", encoding="utf-8") as file:
-        signals = json.load(file)
+        signals = yaml.safe_load(file)
 except FileNotFoundError:
-    raise RuntimeError(f"No file called {filename}.json")
+    raise RuntimeError(f"No file called {filename}.yml")
 
 if len(signals) > 4:
     raise RuntimeError("Can't support more than 4 channels")

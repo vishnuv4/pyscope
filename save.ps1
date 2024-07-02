@@ -3,5 +3,5 @@ param(
     [string]$filename
 )
 
-$saveFilename = "signals\" + $filename + ".json"
-Copy-Item -Path "outputs_hex2bin.json" -Destination $saveFilename
+$saveFilename = "signals\" + $filename + ".yml"
+Copy-Item -Path "outputs_hex2bin.yml" -Destination $saveFilename
