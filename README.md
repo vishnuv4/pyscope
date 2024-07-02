@@ -7,7 +7,7 @@ Tool to simulate digital signals on an oscilloscope. Analog signals are supporte
 The tool is intended to be used with a Powershell CLI set to the repository root.
 Each signal (a collection of channels) must be stored as a yml file of bitstrings in the ```signals\``` folder.
 
-There are 3 commands:
+There are 4 commands:
 - ```.\run [filename]```
     - Displays the signal with the specified name in ```signals\```
 - ```.\conv```
