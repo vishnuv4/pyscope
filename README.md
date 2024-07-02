@@ -21,4 +21,4 @@ For the commands requiring a filename, do not add the ```.yml``` file extension 
 
 The keys in the yml files within ```signals\``` must be one out of ```ch0```, ```ch1```, ```ch2```, or ```ch3```. No more than 4 channels are supported. The order of channels in the yml file does not matter.
 
-Whitespace in the strings also do not matter, so we can group the channel strings of 1s and 0s however it's convenient.
+Whitespace in the strings also do not matter, so we can group the channel strings of 1s and 0s however it's convenient. This applies to both the yml files in the ```signals``` folder and the hex2bin input file.
