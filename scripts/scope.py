@@ -54,7 +54,7 @@ plt.ylabel('')
 plt.ylim(( -2 * len(signals) + 1), 2)
 
 plt.xticks(ticks=t, labels='')
-plt.yticks(ticks=[(-2 * i) for i in range(len(lengths))], labels=[channel for channel in signals.keys()])
+plt.yticks(ticks=[(-2 * i) for i in range(len(lengths))], labels=signals.keys())
 
 plt.grid(True)
 
