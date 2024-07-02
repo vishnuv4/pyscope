@@ -33,7 +33,7 @@ if __name__ == "__main__":
         with open("inputs_hex2bin.yml", "r", encoding="utf-8") as file:
             hex_strings = yaml.safe_load(file)
     except FileNotFoundError:
-        error.fatal("No input file found. Create a file called hex2bin_inputs.yml in the repository root.")
+        error.fatal("No input file found. Create a file called inputs_hex2bin.yml in the repository root.")
 
     for ch in hex_strings:
         hex_strings[ch] = "".join(hex_strings[ch].split())
