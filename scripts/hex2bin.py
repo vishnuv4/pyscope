@@ -5,8 +5,10 @@
 import yaml
 
 def convert_hex2bin(hex_str):
+    """
+    Converts a hexadecimal string to binary string
+    """
 
-    hex_str = "".join(hex_str.split())
     if not all(char in "0123456789abcdefABCDEF" for char in hex_str):
         raise ValueError("Input string is not a valid hexadecimal number.")
 
@@ -31,6 +33,17 @@ if __name__ == "__main__":
             hex_strings = yaml.safe_load(file)
     except FileNotFoundError as exc:
         raise RuntimeError("No input file found. Create a file called hex2bin_inputs.yml in the repository root.") from exc
+
+    for ch in hex_strings:
+        hex_strings[ch] = "".join(hex_strings[ch].split())
+
+    lengths = [len(lst) for lst in hex_strings.values()]
+    if not all(length is lengths[0] for length in lengths):
+        print('\n')
+        print("WARNING: Signal lengths are not the same")
+        for ch,sig in hex_strings.items():
+            print(f"{ch} : {len(sig)} characters")
+        print('\n')
 
     bin_strings = {}
     for string in hex_strings:
