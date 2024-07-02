@@ -3,6 +3,8 @@
 # Saves them in hex2bin_outputs.yml
 
 import yaml
+import sys
+import scripts.color_print as color_print
 
 def convert_hex2bin(hex_str):
     """
@@ -31,8 +33,9 @@ if __name__ == "__main__":
     try:
         with open("inputs_hex2bin.yml", "r", encoding="utf-8") as file:
             hex_strings = yaml.safe_load(file)
-    except FileNotFoundError as exc:
-        raise RuntimeError("No input file found. Create a file called hex2bin_inputs.yml in the repository root.") from exc
+    except FileNotFoundError:
+        color_print.error("No input file found. Create a file called hex2bin_inputs.yml in the repository root.")
+        sys.exit()
 
     for ch in hex_strings:
         hex_strings[ch] = "".join(hex_strings[ch].split())
@@ -40,7 +43,7 @@ if __name__ == "__main__":
     lengths = [len(lst) for lst in hex_strings.values()]
     if not all(length is lengths[0] for length in lengths):
         print('\n')
-        print("WARNING: Signal lengths are not the same")
+        color_print.warning("Signal lengths are not the same")
         for ch,sig in hex_strings.items():
             print(f"{ch} : {len(sig)} characters")
         print('\n')

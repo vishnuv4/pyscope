@@ -1,7 +1,10 @@
-import matplotlib.pyplot as plt
 import argparse
 import collections
+import sys
 import yaml
+import matplotlib.pyplot as plt
+
+import scripts.color_print as color_print
 
 parser = argparse.ArgumentParser(description='Signals')
 parser.add_argument('file', type=str, help="Name of the signal file")
@@ -12,15 +15,19 @@ filename = args.file
 try:
     with open(filename, "r", encoding="utf-8") as file:
         signals = yaml.safe_load(file)
-except FileNotFoundError as exc:
-    raise RuntimeError(f"No file called {filename}.yml") from exc
+except FileNotFoundError:
+    color_print.error(f"No file called {filename}")
+    sys.exit()
 
 if len(signals) > 4:
-    raise RuntimeError("Can't support more than 4 channels")
+    color_print.error("Can't support more than 4 channels")
+    sys.exit()
 
 channel_list = ["ch0", "ch1", "ch2", "ch3"]
-if not all(key in channel_list for key in signals.keys()):
-    raise RuntimeError("Invalid channel name")
+for key in signals.keys():
+    if key not in channel_list:
+        color_print.error(f"Invalid channel name: {key}")
+        sys.exit()
 
 signals = collections.OrderedDict(sorted(signals.items()))
 
@@ -32,7 +39,8 @@ for ch in signals:
 
 lengths = [len(lst) for lst in signals.values()]
 if not all(length is lengths[0] for length in lengths):
-    raise ValueError("Signal lengths are not the same")
+    color_print.error("Signal lengths are not the same")
+    sys.exit()
 
 t = range(lengths[0])
 
