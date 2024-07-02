@@ -12,8 +12,8 @@ filename = args.file
 try:
     with open(filename, "r", encoding="utf-8") as file:
         signals = yaml.safe_load(file)
-except FileNotFoundError:
-    raise RuntimeError(f"No file called {filename}.yml")
+except FileNotFoundError as exc:
+    raise RuntimeError(f"No file called {filename}.yml") from exc
 
 if len(signals) > 4:
     raise RuntimeError("Can't support more than 4 channels")

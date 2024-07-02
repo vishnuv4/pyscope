@@ -29,12 +29,12 @@ if __name__ == "__main__":
     try:
         with open("inputs_hex2bin.yml", "r", encoding="utf-8") as file:
             hex_strings = yaml.safe_load(file)
-    except FileNotFoundError:
-        raise RuntimeError("No input file found. Create a file called hex2bin_inputs.yml in the repository root.")
+    except FileNotFoundError as exc:
+        raise RuntimeError("No input file found. Create a file called hex2bin_inputs.yml in the repository root.") from exc
 
     bin_strings = {}
-    for input in hex_strings:
-        bin_strings[input] = convert_hex2bin(hex_strings[input])
+    for string in hex_strings:
+        bin_strings[string] = convert_hex2bin(hex_strings[string])
 
     with open("outputs_hex2bin.yml", "w", encoding="utf-8") as file:
         yaml.dump(bin_strings, file, default_flow_style=False)
