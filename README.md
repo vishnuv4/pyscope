@@ -15,7 +15,7 @@ There are 3 commands:
 - ```.\save [filename]```
     - Saves the contents of ```hex2bin_outputs.yml``` to a file with the specified name in the ```signals\``` folder.
 - ```.\analog```
-    - Runs the analog scope. The signal to be modified is within ```generate_signal()``` function of the ```scripts\analog_scope``` file.
+    - Runs the analog scope. The signal to be modified is within ```generate_signal()``` function of the ```scripts\analog_scope.py``` file.
 
 For the commands requiring a filename, do not add the ```.yml``` file extension - the script will do that.
 
