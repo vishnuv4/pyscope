@@ -34,7 +34,7 @@ for ch in signals:
     i += 1
 
 lengths = [len(lst) for lst in signals.values()]
-if not all(length is lengths[0] for length in lengths):
+if not all(length == lengths[0] for length in lengths):
     error.fatal("Signal lengths are not the same")
 
 t = range(lengths[0])
