@@ -1,10 +1,12 @@
+import sys
 from colorama import Fore,Style
 
-def error(string):
+def fatal(string):
     """
     Prints error messages
     """
     print(f"{Fore.RED}ERROR: {string}{Style.RESET_ALL}")
+    sys.exit()
 
 def warning(string):
     """

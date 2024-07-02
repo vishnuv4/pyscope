@@ -3,8 +3,7 @@
 # Saves them in hex2bin_outputs.yml
 
 import yaml
-import sys
-import scripts.color_print as color_print
+import scripts.error as error
 
 def convert_hex2bin(hex_str):
     """
@@ -12,7 +11,7 @@ def convert_hex2bin(hex_str):
     """
 
     if not all(char in "0123456789abcdefABCDEF" for char in hex_str):
-        raise ValueError("Input string is not a valid hexadecimal number.")
+        error.fatal("Input string is not a valid hexadecimal number")
 
     # Dictionary to map hexadecimal digits to their 4-bit binary equivalents
     hex_to_bin_map = {
@@ -34,19 +33,17 @@ if __name__ == "__main__":
         with open("inputs_hex2bin.yml", "r", encoding="utf-8") as file:
             hex_strings = yaml.safe_load(file)
     except FileNotFoundError:
-        color_print.error("No input file found. Create a file called hex2bin_inputs.yml in the repository root.")
-        sys.exit()
+        error.fatal("No input file found. Create a file called hex2bin_inputs.yml in the repository root.")
 
     for ch in hex_strings:
         hex_strings[ch] = "".join(hex_strings[ch].split())
 
     lengths = [len(lst) for lst in hex_strings.values()]
     if not all(length is lengths[0] for length in lengths):
-        print('\n')
-        color_print.warning("Signal lengths are not the same")
+        print("\n")
+        error.warning("Signal lengths are not the same")
         for ch,sig in hex_strings.items():
             print(f"{ch} : {len(sig)} characters")
-        print('\n')
 
     bin_strings = {}
     for string in hex_strings:
@@ -55,5 +52,7 @@ if __name__ == "__main__":
     with open("outputs_hex2bin.yml", "w", encoding="utf-8") as file:
         yaml.dump(bin_strings, file, default_flow_style=False)
     
+    print("\n")
     for key, val in bin_strings.items():
         print(f"{key} : {val}")
+    print("\n")
