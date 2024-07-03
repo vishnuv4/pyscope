@@ -2,6 +2,18 @@
 
 Tool to simulate digital signals on an oscilloscope. Analog signals are also supported but somewhat less elegantly than digital. Runs on Windows.
 
+## Requirements
+
+Python 3.12. Run these commands in a Powershell CLI :
+
+```
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+Note: Avoid changing the name of the virtual environment. If you must, then update the name in the .ps1 scripts (analog, conv, run, save) in the repo root. And the .gitignore as well.
+
 ## Usage
 
 The tool is intended to be used with a Powershell CLI set to the repository root.
