@@ -7,7 +7,7 @@ Tool to simulate digital signals on an oscilloscope. Analog signals are also sup
 The tool is intended to be used with a Powershell CLI set to the repository root.
 Each digital signal (a collection of channels) must be stored as a yml file of bitstrings in the ```signals\``` folder. The analog signals must be provided within the python script itself, details mentioned below.
 
-There are 4 commands:
+There are 4 CLI commands:
 - ```.\run [filename]```
     - Displays the signal with the specified name in ```signals\```
 - ```.\conv```
