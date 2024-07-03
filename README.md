@@ -4,7 +4,9 @@ Tool to simulate digital signals on an oscilloscope. Analog signals are also sup
 
 ## Requirements
 
-Python 3.12. Run these commands in a Powershell CLI :
+Python 3.12. It must be accessible by powershell - run ```python --version``` in a powershell window to confirm. Not tested with versions below 3.12, but it may work.
+
+Run these commands in a Powershell CLI in the repo root:
 
 ```
 python -m venv .venv
