@@ -9,7 +9,7 @@ Each digital signal (a collection of channels) must be stored as a yml file of b
 
 There are 4 CLI commands:
 - ```.\run [filename]```
-    - Displays the signal with the specified name in ```signals\```
+    - Displays the digital signal with the specified name in ```signals\```
 - ```.\conv```
     - Converts the hex strings in ```hex2bin_inputs.yml``` and saves it in ```hex2bin_outputs.yml```
 - ```.\save [filename]```
