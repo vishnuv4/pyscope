@@ -16,7 +16,7 @@ def generate_signal():
 
     signals = {}
     signals["ch0"] = np.cos(np.linspace(0, 50 * np.pi, 400))
-    signals["ch1"] = np.linspace(0,10,400) % 2
+    signals["ch1"] = np.linspace(0,20,400) % 4 - 2
     signals["ch2"] = np.concatenate([arr1, arr2])
     return signals
 
