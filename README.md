@@ -1,6 +1,6 @@
 ## Description
 
-Tool to simulate digital signals on an oscilloscope. Analog signals are also supported but somewhat less elegantly than digital. Runs on Windows.
+Tool to simulate signals on an oscilloscope. Runs on Windows.
 
 ## Requirements
 
