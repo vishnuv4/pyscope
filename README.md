@@ -2,9 +2,11 @@
 
 Tool to simulate digital signals on an oscilloscope. Analog signals are also supported but somewhat less elegantly than digital. Runs on Windows.
 
-## Requirements and Setup
+## Requirements
 
 Python 3.12. It must be accessible by powershell - run ```python --version``` in a powershell window to confirm. Not tested with versions below 3.12, but it may work.
+
+## Setup
 
 Run these commands in a Powershell CLI in the repo root:
 
