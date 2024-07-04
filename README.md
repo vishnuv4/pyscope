@@ -13,9 +13,7 @@ It must be accessible by powershell - run ```python --version``` in a powershell
 Run these commands in a Powershell CLI in the repo root:
 
 ```
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+python -m venv .venv; .venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
 Note: Avoid changing the name of the virtual environment. If you must, then update the name in the .ps1 scripts (analog, conv, run, save) in the repo root. And the .gitignore as well.
