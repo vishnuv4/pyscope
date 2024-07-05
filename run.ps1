@@ -1,8 +1,12 @@
-# This is the yml file containing the signal you want to display on different channels
 param(
     [Parameter(Mandatory=$true)]
     [string]$filename
 )
 
+# If you want to change the name of the virtual environment, do it here.
+$venv_name = ".venv"
+
+$venv_python = Join-Path -Path $venv_name -ChildPath "Scripts\python.exe"
+
 $fullFileName = "signals\" + $filename + ".yml"
-.venv\Scripts\python.exe -m "scripts.scope" $fullFileName
+& $venv_python -m "scripts.scope" $fullFileName

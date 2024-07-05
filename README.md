@@ -10,13 +10,13 @@ It must be accessible by powershell - run ```python --version``` in a powershell
 
 ## Setup
 
-Run these commands in a Powershell CLI in the repo root:
+Run this command in a Powershell CLI in the repo root:
 
 ```
-python -m venv .venv; .venv\Scripts\python.exe -m pip install -r requirements.txt
+.\setup
 ```
 
-Note: Avoid changing the name of the virtual environment. If you must, then update the name in the .ps1 scripts (analog, conv, run, save) in the repo root. And the .gitignore as well.
+This runs a script that creates a python virtual environment and installs the necessary packages. If you want to change the virtual environment name in the script, ensure you change it in the other scripts (analog, conv, and run) as well.
 
 ## Usage
 
