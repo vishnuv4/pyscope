@@ -2,6 +2,8 @@
 
 Tool to simulate signals on an oscilloscope. Runs on Windows.
 
+![pyscope](https://github.com/user-attachments/assets/a0922f71-2954-45cb-8722-e9e3f90841d3)
+
 ## Requirements
 
 Python 3.12 
